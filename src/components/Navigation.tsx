@@ -108,7 +108,7 @@ const Navigation = () => {
                 </button>
               </div>
 
-              <div className="flex-1 flex flex-col justify-center gap-1 md:gap-2 overflow-y-auto">
+              <div className="flex-1 flex flex-col gap-1 md:gap-2 overflow-y-auto mt-[150px]">
                 {links.map((link, index) => (
                   <motion.a
                     key={link.href}

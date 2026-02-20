@@ -1,5 +1,5 @@
 import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import ScrollReveal from "./ScrollReveal";
 import project1 from "@/assets/project-1.jpg";
 import project2 from "@/assets/project-2.jpg";
@@ -11,10 +11,38 @@ import work2 from "@/assets/work-2.jpg";
 import work3 from "@/assets/work-3.jpg";
 
 const imageSets = [
-  { left: project1, right: work1, label: "Identity Systems", sub: "Building visual foundations" },
-  { left: project2, right: work2, label: "Editorial Design", sub: "Print meets digital" },
-  { left: project3, right: work3, label: "Campaign Work", sub: "Stories that move people" },
-  { left: project4, right: project5, label: "Spatial Design", sub: "Environments with intent" },
+  {
+    left: project1,
+    right: work1,
+    label: "Identity Systems",
+    sub: "Building visual foundations",
+    hoverImage: project1,
+    hoverText: "Grid-driven brand architecture built for consistency and scale.",
+  },
+  {
+    left: project2,
+    right: work2,
+    label: "Editorial Design",
+    sub: "Print meets digital",
+    hoverImage: project2,
+    hoverText: "Narrative layouts balancing typography, rhythm, and white space.",
+  },
+  {
+    left: project3,
+    right: work3,
+    label: "Campaign Work",
+    sub: "Stories that move people",
+    hoverImage: project3,
+    hoverText: "Cross-channel campaign moments designed for memorability.",
+  },
+  {
+    left: project4,
+    right: project5,
+    label: "Spatial Design",
+    sub: "Environments with intent",
+    hoverImage: project4,
+    hoverText: "Physical and digital environments aligned to one brand voice.",
+  },
 ];
 
 const DualImageScroll = () => {
@@ -43,7 +71,15 @@ const DualImageScroll = () => {
           </div>
           <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-20">
             {imageSets.map((set, i) => (
-              <TextOverlay key={`t-${i}`} label={set.label} sub={set.sub} index={i} activeIndex={activeIndex} />
+              <TextOverlay
+                key={`t-${i}`}
+                label={set.label}
+                sub={set.sub}
+                index={i}
+                activeIndex={activeIndex}
+                hoverImage={set.hoverImage}
+                hoverText={set.hoverText}
+              />
             ))}
           </div>
           <div className="absolute top-0 bottom-0 left-1/2 w-px bg-background/20 z-10" />
@@ -141,9 +177,12 @@ interface TextOverlayProps {
   sub: string;
   index: number;
   activeIndex: any;
+  hoverImage: string;
+  hoverText: string;
 }
 
-const TextOverlay = ({ label, sub, index, activeIndex }: TextOverlayProps) => {
+const TextOverlay = ({ label, sub, index, activeIndex, hoverImage, hoverText }: TextOverlayProps) => {
+  const [hovered, setHovered] = useState(false);
   const opacity = useTransform(activeIndex, (v: number) => {
     const dist = Math.abs(v - index);
     return dist < 0.4 ? 1 : 0;
@@ -154,16 +193,36 @@ const TextOverlay = ({ label, sub, index, activeIndex }: TextOverlayProps) => {
   });
 
   return (
-    <motion.div className="absolute text-center" style={{ opacity, y }}>
-      <h3
-        className="text-[10vw] md:text-[6vw] font-medium leading-[0.95] tracking-[-0.04em]"
-        style={{
-          color: "white",
-          textShadow: "0 2px 20px rgba(0,0,0,0.5), 0 4px 40px rgba(0,0,0,0.3)",
-        }}
-      >
-        {label}
-      </h3>
+    <motion.div
+      className="absolute text-center"
+      style={{ opacity, y }}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+    >
+      {label === "Identity Systems" ? (
+        <div className="inline-flex items-center justify-center px-10 md:px-16 py-4 md:py-6 border border-white/70 rounded-[60px] bg-black/20 backdrop-blur-sm">
+          <h3
+            className="text-[9vw] md:text-[5vw] font-medium leading-[0.95] tracking-[-0.04em]"
+            style={{
+              color: "white",
+              textShadow: "0 2px 20px rgba(0,0,0,0.45), 0 4px 40px rgba(0,0,0,0.25)",
+            }}
+          >
+            {label}
+          </h3>
+        </div>
+      ) : (
+        <h3
+          className="text-[10vw] md:text-[6vw] font-medium leading-[0.95] tracking-[-0.04em]"
+          style={{
+            color: "white",
+            textShadow: "0 2px 20px rgba(0,0,0,0.5), 0 4px 40px rgba(0,0,0,0.3)",
+          }}
+        >
+          {label}
+        </h3>
+      )}
+
       <p
         className="text-sm md:text-base mt-4 uppercase tracking-[0.2em]"
         style={{
@@ -173,6 +232,20 @@ const TextOverlay = ({ label, sub, index, activeIndex }: TextOverlayProps) => {
       >
         {sub}
       </p>
+
+      <motion.div
+        initial={{ opacity: 0, y: 16 }}
+        animate={{ opacity: hovered ? 1 : 0, y: hovered ? 0 : 16 }}
+        transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+        className="pointer-events-none absolute left-1/2 top-full mt-5 -translate-x-1/2"
+      >
+        <div className="flex items-center gap-4 rounded-2xl border border-white/30 bg-black/50 px-4 py-3 backdrop-blur-md">
+          <img src={hoverImage} alt={`${label} preview`} className="w-[200px] h-[120px] object-cover rounded-xl" />
+          <p className="max-w-[220px] text-left text-xs md:text-sm leading-relaxed text-white/90 normal-case tracking-normal">
+            {hoverText}
+          </p>
+        </div>
+      </motion.div>
     </motion.div>
   );
 };

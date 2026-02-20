@@ -58,14 +58,6 @@ const SphereSection = () => {
           <div className="absolute inset-[23%] rounded-full border border-foreground/20 bg-background" />
         </div>
       </motion.div>
-
-      {/* Subtitle */}
-      <motion.p
-        style={{ opacity }}
-        className="absolute bottom-16 text-xs uppercase tracking-[0.3em] text-muted-foreground z-20"
-      >
-        Scroll to explore
-      </motion.p>
     </section>
   );
 };
