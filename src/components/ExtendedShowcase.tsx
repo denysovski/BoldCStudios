@@ -1,6 +1,7 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef, useState } from "react";
 import ScrollReveal from "./ScrollReveal";
+import { ArrowUpRight, CheckCircle2, Gauge, Layers3, Sparkles } from "lucide-react";
 import work1 from "@/assets/work-1.jpg";
 import work2 from "@/assets/work-2.jpg";
 import work3 from "@/assets/work-3.jpg";
@@ -11,9 +12,13 @@ interface ShowcaseItemProps {
   title: string;
   subtitle: string;
   align: "left" | "right";
+  highlights?: string[];
+  indicators?: { label: string; value: string }[];
+  ctaLabel?: string;
+  ctaHref?: string;
 }
 
-const ShowcaseItem = ({ src, title, subtitle, align }: ShowcaseItemProps) => {
+const ShowcaseItem = ({ src, title, subtitle, align, highlights, indicators, ctaLabel, ctaHref }: ShowcaseItemProps) => {
   const [hovered, setHovered] = useState(false);
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({
@@ -37,6 +42,52 @@ const ShowcaseItem = ({ src, title, subtitle, align }: ShowcaseItemProps) => {
           <p className="body-large text-muted-foreground mt-6 max-w-md">
             {subtitle}
           </p>
+
+          {highlights && highlights.length > 0 && (
+            <div className="mt-8 grid gap-3 max-w-md">
+              {highlights.map((point) => (
+                <div key={point} className="flex items-start gap-3">
+                  <CheckCircle2 className="w-4 h-4 mt-0.5 text-foreground" />
+                  <p className="text-sm text-muted-foreground leading-relaxed">{point}</p>
+                </div>
+              ))}
+            </div>
+          )}
+
+          {indicators && indicators.length > 0 && (
+            <div className="mt-8 grid grid-cols-3 gap-3 max-w-lg">
+              {indicators.map((item, idx) => {
+                const Icon = idx === 0 ? Layers3 : idx === 1 ? Gauge : Sparkles;
+                return (
+                  <div key={item.label} className="border border-foreground/10 p-3 md:p-4">
+                    <div className="flex items-center gap-2 mb-2">
+                      <Icon className="w-3.5 h-3.5 text-foreground" />
+                      <p className="text-[10px] uppercase tracking-[0.18em] text-muted-foreground">{item.label}</p>
+                    </div>
+                    <p className="text-sm md:text-base font-medium text-foreground">{item.value}</p>
+                  </div>
+                );
+              })}
+            </div>
+          )}
+
+          {ctaLabel && ctaHref && (
+            <div className="mt-8 flex flex-wrap items-center gap-4">
+              <a
+                href={ctaHref}
+                className="inline-flex items-center gap-2 bg-foreground text-primary-foreground px-5 py-3 text-xs md:text-sm uppercase tracking-[0.14em]"
+              >
+                {ctaLabel}
+                <ArrowUpRight className="w-4 h-4" />
+              </a>
+              <a
+                href="#contact"
+                className="text-xs md:text-sm uppercase tracking-[0.14em] text-foreground underline underline-offset-4 hover:text-muted-foreground transition-colors"
+              >
+                Book discovery call
+              </a>
+            </div>
+          )}
         </ScrollReveal>
       </div>
 
@@ -60,6 +111,20 @@ const ShowcaseItem = ({ src, title, subtitle, align }: ShowcaseItemProps) => {
             animate={{ opacity: hovered ? 0 : 1 }}
             transition={{ duration: 0.5 }}
           />
+
+          <motion.div
+            className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-transparent p-6 md:p-8 flex items-end"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: hovered ? 1 : 0 }}
+            transition={{ duration: 0.35 }}
+          >
+            <div>
+              <p className="text-[10px] md:text-xs uppercase tracking-[0.2em] text-white/75 mb-2">Case Snapshot</p>
+              <p className="text-white text-sm md:text-base max-w-sm leading-relaxed">
+                Systemized identity architecture across web, editorial, and campaign touchpoints.
+              </p>
+            </div>
+          </motion.div>
         </motion.div>
       </motion.div>
     </div>
@@ -73,6 +138,18 @@ const ExtendedShowcase = () => {
       title: "Visual Systems",
       subtitle: "Crafting cohesive brand languages that transcend mediums and resonate across every touchpoint.",
       align: "left",
+      highlights: [
+        "Cross-channel component library for consistent brand expression.",
+        "Editorial-grade typography system tuned for web and motion.",
+        "Conversion-oriented layouts with clear narrative hierarchy.",
+      ],
+      indicators: [
+        { label: "Modules", value: "24" },
+        { label: "Clarity", value: "+38%" },
+        { label: "Lift", value: "2.3x" },
+      ],
+      ctaLabel: "View Visual System",
+      ctaHref: "#work",
     },
     {
       src: work2,
