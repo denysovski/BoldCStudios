@@ -2,11 +2,11 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef, useState } from "react";
 import ScrollReveal from "./ScrollReveal";
 import { ArrowUpRight, CheckCircle2, Gauge, Layers3, Sparkles } from "lucide-react";
-import work1 from "@/assets/work-1.jpg";
-import work3 from "@/assets/work-3.jpg";
 
-const work2 = "https://images.unsplash.com/photo-1584622180454-e3400ca199e6?q=80&w=3840&auto=format&fit=crop&ixlib=rb-4.1.0";
-const work4 = "https://images.unsplash.com/photo-1486868847030-b1a5e9fbe4f9?q=80&w=3840&auto=format&fit=crop&ixlib=rb-4.1.0";
+const work1 = "https://images.unsplash.com/photo-1669295384050-a1d4357bd1d7?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D";
+const work2 = "https://images.unsplash.com/photo-1704895390342-b52a2f45786c?q=80&w=1632&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D";
+const work3 = "https://images.unsplash.com/photo-1668450433152-e56d7e8fe4ee?q=80&w=1064&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D";
+const work4 = "https://images.unsplash.com/photo-1638438134099-a91e5373aaf0?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D";
 
 interface ShowcaseItemProps {
   src: string;
@@ -97,7 +97,7 @@ const ShowcaseItem = ({ src, title, subtitle, align, highlights, indicators, cta
           <motion.img
             src={src}
             alt={title}
-            className="w-full h-[50vh] md:h-[70vh] object-cover"
+            className="w-full h-[50vh] md:h-[70vh] object-cover grayscale"
             animate={{ scale: hovered ? 1.05 : 1 }}
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           />
