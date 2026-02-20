@@ -1,7 +1,7 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 
-const heroImage = "https://images.unsplash.com/photo-1431540015161-0bf868a2d407?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0";
+const heroImage = "https://images.unsplash.com/photo-1479839672679-a46483c0e7c8?q=80&w=3840&auto=format&fit=crop&ixlib=rb-4.1.0";
 
 const Hero = () => {
   const ref = useRef(null);

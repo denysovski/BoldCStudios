@@ -25,7 +25,7 @@ const imageRows = [
 const DualImageScroll = () => {
   return (
     <section>
-      <div className="relative h-[88vh] md:h-[96vh] overflow-hidden bg-black">
+      <div className="relative h-[88vh] md:h-[96vh] overflow-hidden bg-white">
         <div className="absolute inset-0 space-y-4 md:space-y-6 py-5 md:py-8">
           {imageRows.map((row, rowIndex) => (
             <motion.div
@@ -37,7 +37,7 @@ const DualImageScroll = () => {
               {[...row, ...row].map((src, index) => (
                 <div
                   key={`${rowIndex}-${index}`}
-                  className="w-[42vw] sm:w-[32vw] md:w-[24vw] lg:w-[20vw] xl:w-[17vw] h-[24vh] md:h-[27vh] shrink-0 overflow-hidden rounded-2xl border border-white/15"
+                  className="w-[42vw] sm:w-[32vw] md:w-[24vw] lg:w-[20vw] xl:w-[17vw] h-[24vh] md:h-[27vh] shrink-0 overflow-hidden rounded-2xl border border-black/15"
                 >
                   <img
                     src={src}
@@ -50,15 +50,15 @@ const DualImageScroll = () => {
           ))}
         </div>
 
-        <div className="absolute inset-0 bg-black/35" />
+        <div className="absolute inset-0 bg-white/35" />
 
         <div className="absolute inset-0 z-20 pointer-events-none px-4 flex items-center justify-center">
-          <div className="inline-flex items-center justify-center px-8 md:px-20 py-4 md:py-6 border border-white/75 rounded-[60px] bg-black/35 backdrop-blur-sm">
+          <div className="inline-flex items-center justify-center px-8 md:px-20 py-4 md:py-6 border border-black/25 rounded-[60px] bg-white/70 backdrop-blur-sm">
             <h3
               className="text-[10vw] md:text-[6vw] font-medium leading-[0.95] tracking-[-0.04em] text-center"
               style={{
-                color: "white",
-                textShadow: "0 2px 20px rgba(0,0,0,0.5), 0 4px 40px rgba(0,0,0,0.3)",
+                color: "#101010",
+                textShadow: "0 10px 26px rgba(255,255,255,0.95)",
               }}
             >
               Identity Systems

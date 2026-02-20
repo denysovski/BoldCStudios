@@ -24,18 +24,18 @@ const CustomCursor = () => {
       mouseY.set(event.clientY);
     };
 
-    const handleLeave = () => {
+    const handleViewportLeave = () => {
       mouseX.set(-100);
       mouseY.set(-100);
     };
 
     window.addEventListener("mousemove", handleMove);
-    window.addEventListener("mouseout", handleLeave);
+    document.documentElement.addEventListener("mouseleave", handleViewportLeave);
 
     return () => {
       document.documentElement.classList.remove("cursor-custom");
       window.removeEventListener("mousemove", handleMove);
-      window.removeEventListener("mouseout", handleLeave);
+      document.documentElement.removeEventListener("mouseleave", handleViewportLeave);
     };
   }, [mouseX, mouseY]);
 
