@@ -82,7 +82,7 @@ const Navigation = () => {
             <motion.button
               type="button"
               aria-label="Close menu backdrop"
-              className="fixed inset-0 z-[70] bg-background/40 backdrop-blur-sm"
+              className="fixed inset-0 z-[70] bg-black/35 backdrop-blur-[1px]"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
@@ -91,34 +91,35 @@ const Navigation = () => {
             />
 
             <motion.aside
-              className="fixed top-0 right-0 z-[80] h-screen w-full md:w-[78vw] lg:w-[68vw] bg-background border-l border-foreground/10 section-padding py-24 md:py-28 flex flex-col"
+              className="fixed top-0 right-0 z-[80] h-screen w-[98px] md:w-[118px] bg-black border-l border-white/20 py-6 md:py-8 px-3 md:px-4 flex flex-col"
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
-              transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+              transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
             >
-              <div className="flex items-center justify-between mb-10 md:mb-14">
-                <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground">Navigation</p>
+              <div className="flex flex-col items-center gap-4 mb-6 md:mb-8">
+                <p className="text-[10px] md:text-[11px] uppercase tracking-[0.28em] text-white/60 text-center">Menu</p>
                 <button
                   type="button"
-                  className="text-xs uppercase tracking-[0.2em] text-muted-foreground hover:text-foreground transition-colors"
+                  className="w-8 h-8 md:w-9 md:h-9 rounded-full border border-white/35 text-white/80 hover:text-white hover:border-white transition-colors"
                   onClick={() => setIsOpen(false)}
+                  aria-label="Close menu"
                 >
-                  Close
+                  ×
                 </button>
               </div>
 
-              <div className="flex-1 flex flex-col gap-1 md:gap-2 overflow-y-auto mt-[150px]">
+              <div className="flex-1 flex flex-col items-center gap-3 md:gap-4 overflow-y-auto">
                 {links.map((link, index) => (
                   <motion.a
                     key={link.href}
                     href={link.href}
                     onClick={() => setIsOpen(false)}
-                    className="text-[13vw] md:text-[10vw] lg:text-[8.8vw] leading-[0.88] tracking-[-0.04em] font-medium text-foreground hover:text-muted-foreground transition-colors"
-                    initial={{ opacity: 0, x: 50, scale: 0.72 }}
-                    animate={{ opacity: 1, x: 0, scale: 1 }}
-                    exit={{ opacity: 0, x: 30, scale: 0.9 }}
-                    transition={{ duration: 0.6, delay: 0.06 + index * 0.04, ease: [0.22, 1, 0.36, 1] }}
+                    className="text-[10px] md:text-[11px] leading-[1.1] uppercase tracking-[0.16em] font-medium text-white/80 hover:text-white transition-colors text-center"
+                    initial={{ opacity: 0, x: 16 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: 12 }}
+                    transition={{ duration: 0.35, delay: 0.04 + index * 0.03, ease: [0.22, 1, 0.36, 1] }}
                   >
                     {link.label}
                   </motion.a>
