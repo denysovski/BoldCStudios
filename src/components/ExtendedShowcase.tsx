@@ -3,9 +3,10 @@ import { useRef, useState } from "react";
 import ScrollReveal from "./ScrollReveal";
 import { ArrowUpRight, CheckCircle2, Gauge, Layers3, Sparkles } from "lucide-react";
 import work1 from "@/assets/work-1.jpg";
-import work2 from "@/assets/work-2.jpg";
 import work3 from "@/assets/work-3.jpg";
-import work4 from "@/assets/work-4.jpg";
+
+const work2 = "https://images.unsplash.com/photo-1584622180454-e3400ca199e6?q=80&w=3840&auto=format&fit=crop&ixlib=rb-4.1.0";
+const work4 = "https://images.unsplash.com/photo-1486868847030-b1a5e9fbe4f9?q=80&w=3840&auto=format&fit=crop&ixlib=rb-4.1.0";
 
 interface ShowcaseItemProps {
   src: string;
