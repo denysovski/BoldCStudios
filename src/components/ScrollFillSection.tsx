@@ -128,7 +128,7 @@ const ScrollFillSection = () => {
               <motion.div
                 className="group cursor-pointer"
                 whileHover={{ y: -8 }}
-                transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+              transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
               >
                 <div className="w-16 h-16 rounded-full border border-foreground/10 flex items-center justify-center mb-6 group-hover:bg-foreground group-hover:text-primary-foreground transition-all duration-500">
                   <div className="group-hover:invert transition-all duration-500">

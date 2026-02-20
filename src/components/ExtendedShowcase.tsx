@@ -99,19 +99,19 @@ const ShowcaseItem = ({ src, title, subtitle, align, highlights, indicators, cta
             alt={title}
             className="w-full h-[50vh] md:h-[70vh] object-cover grayscale"
             animate={{ scale: hovered ? 1.05 : 1 }}
-            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
           />
           <motion.div
             className="absolute inset-0 bg-foreground/10"
             animate={{ opacity: hovered ? 0 : 1 }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.7 }}
           />
 
           <motion.div
             className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-transparent p-6 md:p-8 flex items-end"
             initial={{ opacity: 0 }}
             animate={{ opacity: hovered ? 1 : 0 }}
-            transition={{ duration: 0.35 }}
+            transition={{ duration: 0.5 }}
           >
             <div>
               <p className="text-[10px] md:text-xs uppercase tracking-[0.2em] text-white/75 mb-2">Case Snapshot</p>

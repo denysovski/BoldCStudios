@@ -11,7 +11,7 @@ const ServiceItem = ({ number, title, description }: ServiceProps) => (
   <motion.div
     className="group border-t border-foreground/10 py-8 md:py-12 cursor-pointer"
     whileHover={{ x: 20 }}
-    transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+    transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
   >
     <div className="flex items-start justify-between gap-8">
       <div className="flex items-start gap-6 md:gap-12">

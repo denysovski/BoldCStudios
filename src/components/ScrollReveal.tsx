@@ -33,7 +33,7 @@ const ScrollReveal = ({
       initial={{ opacity: 0, ...directions[direction] }}
       animate={isInView ? { opacity: 1, x: 0, y: 0 } : {}}
       transition={{
-        duration: 0.9,
+        duration: 1.3,
         delay,
         ease: [0.22, 1, 0.36, 1],
       }}

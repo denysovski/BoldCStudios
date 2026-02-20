@@ -37,7 +37,7 @@ const ProjectCard = ({ src, title, categories, size = "full" }: ProjectProps) =>
           alt={title}
           className={`w-full object-cover ${size === "full" ? "h-[50vh] md:h-[75vh]" : "h-[40vh] md:h-[55vh]"}`}
           animate={{ scale: hovered ? 1.03 : 1 }}
-          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
         />
       </motion.div>
       <motion.div

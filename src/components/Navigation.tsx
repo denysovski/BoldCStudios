@@ -119,7 +119,7 @@ const Navigation = () => {
                     initial={{ opacity: 0, x: 16 }}
                     animate={{ opacity: 1, x: 0 }}
                     exit={{ opacity: 0, x: 12 }}
-                    transition={{ duration: 0.35, delay: 0.04 + index * 0.03, ease: [0.22, 1, 0.36, 1] }}
+                    transition={{ duration: 0.5, delay: 0.04 + index * 0.03, ease: [0.22, 1, 0.36, 1] }}
                   >
                     {link.label}
                   </motion.a>

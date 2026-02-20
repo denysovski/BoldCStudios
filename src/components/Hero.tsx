@@ -21,7 +21,7 @@ const Hero = () => {
           className="text-[10vw] md:text-[7vw] lg:text-[5.5vw] font-medium leading-[1.05] tracking-[-0.03em] max-w-[85vw]"
           initial={{ opacity: 0, y: 80 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.2, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 1.6, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
         >
           We serve early stage & established businesses through future-proof brand development & digital creative.
         </motion.h1>
@@ -33,7 +33,7 @@ const Hero = () => {
         className="w-full"
         initial={{ opacity: 0, y: 60 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1.4, delay: 0.6, ease: [0.22, 1, 0.36, 1] }}
+        transition={{ duration: 1.8, delay: 0.6, ease: [0.22, 1, 0.36, 1] }}
       >
         <div className="relative w-full h-[50vh] md:h-[70vh] overflow-hidden bg-muted">
           <motion.img
@@ -41,7 +41,7 @@ const Hero = () => {
             alt="Featured work"
             className="w-full h-full object-cover grayscale contrast-125"
             whileHover={{ scale: 1.02 }}
-            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-transparent pointer-events-none" />
           <div className="absolute bottom-0 left-0 right-0 section-padding py-6">
