@@ -92,6 +92,7 @@ const Navigation = () => {
 
             <motion.aside
               className="fixed top-0 right-0 z-[80] h-screen w-full md:w-1/2 bg-background border-l border-foreground/10 overflow-y-auto"
+              data-lenis-prevent
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
@@ -100,7 +101,7 @@ const Navigation = () => {
               <div className="section-padding pt-20 pb-32">
                 <div className="flex items-center justify-between mb-16">
                   <h2 className="text-[8vw] md:text-[5vw] font-medium leading-[0.95] tracking-[-0.04em] text-foreground">
-                    Navigation
+                    MENU
                   </h2>
                   <button
                     type="button"
@@ -112,7 +113,7 @@ const Navigation = () => {
                   </button>
                 </div>
 
-                <div className="space-y-6 md:space-y-8">
+                <div className="space-y-2 md:space-y-3">
                   {links.map((link, index) => (
                     <motion.a
                       key={link.href}
