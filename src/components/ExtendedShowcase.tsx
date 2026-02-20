@@ -72,19 +72,13 @@ const ShowcaseItem = ({ src, title, subtitle, align, highlights, indicators, cta
           )}
 
           {ctaLabel && ctaHref && (
-            <div className="mt-8 flex flex-wrap items-center gap-4">
+            <div className="mt-8">
               <a
                 href={ctaHref}
                 className="inline-flex items-center gap-2 bg-foreground text-primary-foreground px-5 py-3 text-xs md:text-sm uppercase tracking-[0.14em]"
               >
                 {ctaLabel}
                 <ArrowUpRight className="w-4 h-4" />
-              </a>
-              <a
-                href="#contact"
-                className="text-xs md:text-sm uppercase tracking-[0.14em] text-foreground underline underline-offset-4 hover:text-muted-foreground transition-colors"
-              >
-                Book discovery call
               </a>
             </div>
           )}
@@ -156,18 +150,54 @@ const ExtendedShowcase = () => {
       title: "Editorial Craft",
       subtitle: "Where typography meets narrative — publications that demand attention and reward the curious.",
       align: "right",
+      highlights: [
+        "Magazine layouts and editorial design systems optimized for print and digital publication.",
+        "Typography-driven narratives that guide readers through complex information hierarchies.",
+        "Art direction for long-form content spanning web, PDF, and interactive formats.",
+      ],
+      indicators: [
+        { label: "Publications", value: "12" },
+        { label: "Readability", value: "+42%" },
+        { label: "Engagement", value: "3.1x" },
+      ],
+      ctaLabel: "Explore Editorial Work",
+      ctaHref: "#work",
     },
     {
       src: work3,
       title: "Digital Spaces",
       subtitle: "Immersive web experiences built at the intersection of art direction and engineering precision.",
       align: "left",
+      highlights: [
+        "Performance-optimized web platforms with pixel-perfect design execution across devices.",
+        "Interactive storytelling through scroll-triggered animations and gesture-based interactions.",
+        "Accessibility-first design systems that balance aesthetic ambition with usability.",
+      ],
+      indicators: [
+        { label: "Platforms", value: "8" },
+        { label: "Performance", value: "98" },
+        { label: "Conversion", value: "+67%" },
+      ],
+      ctaLabel: "View Digital Projects",
+      ctaHref: "#work",
     },
     {
       src: work4,
       title: "Motion & Film",
       subtitle: "Kinetic storytelling that captures the essence of a brand in movement and time.",
       align: "right",
+      highlights: [
+        "Broadcast-quality motion graphics and video production for brand storytelling and campaigns.",
+        "Cinematic direction and color grading that amplifies emotional resonance and brand identity.",
+        "Seamless integration of motion design across digital products and interactive experiences.",
+      ],
+      indicators: [
+        { label: "Productions", value: "15" },
+        { label: "Reach", value: "2.4M" },
+        { label: "Duration", value: "50h" },
+      ],
+      ctaLabel: "Watch Motion Reel",
+      ctaHref: "#work",
     },
   ];
 
