@@ -1,21 +1,5 @@
-import { Canvas } from "@react-three/fiber";
-import { OrbitControls, Sphere, MeshDistortMaterial } from "@react-three/drei";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
-
-const AnimatedSphere = () => {
-  return (
-    <Sphere args={[1, 128, 128]} scale={1.4}>
-      <MeshDistortMaterial
-        color="#141414"
-        roughness={0.1}
-        metalness={0.9}
-        distort={0.3}
-        speed={1.5}
-      />
-    </Sphere>
-  );
-};
 
 const SphereSection = () => {
   const ref = useRef(null);
@@ -27,6 +11,7 @@ const SphereSection = () => {
   const textY = useTransform(scrollYProgress, [0, 1], [100, -100]);
   const opacity = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0, 1, 1, 0]);
   const scale = useTransform(scrollYProgress, [0, 0.5, 1], [0.8, 1, 0.9]);
+  const ringText = "PRECISION • DECISION • ".repeat(10);
 
   return (
     <section
@@ -45,16 +30,33 @@ const SphereSection = () => {
         </h2>
       </motion.div>
 
-      {/* 3D Sphere */}
+      {/* Donut */}
       <motion.div style={{ scale }} className="relative z-10 w-[80vw] h-[80vw] md:w-[40vw] md:h-[40vw]">
-        <Canvas camera={{ position: [0, 0, 4.5], fov: 35 }}>
-          <ambientLight intensity={0.3} />
-          <directionalLight position={[5, 5, 5]} intensity={1.2} />
-          <directionalLight position={[-5, -3, -5]} intensity={0.4} />
-          <pointLight position={[0, 0, 3]} intensity={0.5} />
-          <AnimatedSphere />
-          <OrbitControls enableZoom={false} enablePan={false} autoRotate autoRotateSpeed={1.5} />
-        </Canvas>
+        <div className="relative w-full h-full rounded-full border border-foreground/25 bg-foreground/[0.03]">
+          <motion.svg
+            viewBox="0 0 400 400"
+            className="absolute inset-0 w-full h-full"
+            animate={{ rotate: 360 }}
+            transition={{ duration: 32, repeat: Infinity, ease: "linear" }}
+          >
+            <defs>
+              <path
+                id="donut-ring-path"
+                d="M 200,200 m -145,0 a 145,145 0 1,1 290,0 a 145,145 0 1,1 -290,0"
+              />
+            </defs>
+            <text
+              fill="currentColor"
+              className="text-[20px] md:text-[18px] uppercase tracking-[0.28em] text-foreground/90"
+            >
+              <textPath href="#donut-ring-path" startOffset="0%">
+                {ringText}
+              </textPath>
+            </text>
+          </motion.svg>
+
+          <div className="absolute inset-[23%] rounded-full border border-foreground/20 bg-background" />
+        </div>
       </motion.div>
 
       {/* Subtitle */}

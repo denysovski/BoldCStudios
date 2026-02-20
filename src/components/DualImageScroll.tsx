@@ -51,7 +51,7 @@ const DualImageScroll = () => {
       </div>
 
       {/* Asymmetric text section below */}
-      <div className="section-padding py-24 md:py-40">
+      <div className="section-padding py-12 md:py-20">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-4">
           <ScrollReveal className="md:col-span-7">
             <h2 className="text-[12vw] md:text-[7vw] font-medium leading-[0.9] tracking-[-0.04em] text-foreground">
@@ -71,7 +71,7 @@ const DualImageScroll = () => {
           </div>
         </div>
 
-        <div className="mt-20 md:mt-32 grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-4">
+        <div className="mt-14 md:mt-20 grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-4">
           <div className="md:col-span-4">
             <ScrollReveal delay={0.05}>
               <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground mb-3">Philosophy</p>
@@ -91,7 +91,7 @@ const DualImageScroll = () => {
           </ScrollReveal>
         </div>
 
-        <div className="mt-20 md:mt-32 grid grid-cols-1 md:grid-cols-12 gap-8">
+        <div className="mt-14 md:mt-20 grid grid-cols-1 md:grid-cols-12 gap-8">
           <ScrollReveal className="md:col-span-6 md:col-start-4" delay={0.08}>
             <div className="border-t border-foreground/10 pt-8">
               <p className="text-[6vw] md:text-[3vw] font-medium leading-[1.1] tracking-[-0.02em] text-foreground text-center">

@@ -6,6 +6,7 @@ const Footer = () => {
   const ref = useRef(null);
   const [email, setEmail] = useState("");
   const [isDark, setIsDark] = useState(false);
+  const marqueeItems = Array.from({ length: 8 }, () => "· Let's Create Together");
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start end", "end end"],
@@ -23,11 +24,15 @@ const Footer = () => {
     <section id="contact" ref={ref}>
       {/* Scrolling marquee */}
       <div className="py-12 md:py-20 overflow-hidden border-t border-foreground/10">
-        <div className="flex animate-scroll-text whitespace-nowrap">
-          {Array.from({ length: 10 }).map((_, i) => (
-            <span key={i} className="text-[8vw] md:text-[6vw] font-medium tracking-[-0.03em] mx-6 shrink-0 text-foreground">
-              · Let's Create Together
-            </span>
+        <div className="flex w-max animate-scroll-text whitespace-nowrap">
+          {[0, 1].map((group) => (
+            <div key={group} className="flex shrink-0">
+              {marqueeItems.map((text, i) => (
+                <span key={`${group}-${i}`} className="text-[8vw] md:text-[6vw] font-medium tracking-[-0.03em] mx-6 shrink-0 text-foreground">
+                  {text}
+                </span>
+              ))}
+            </div>
           ))}
         </div>
       </div>
