@@ -93,6 +93,11 @@
     scroll-behavior: smooth;
   }
 
+  html.cursor-custom,
+  html.cursor-custom * {
+    cursor: none !important;
+  }
+
   * {
     @apply border-border;
   }

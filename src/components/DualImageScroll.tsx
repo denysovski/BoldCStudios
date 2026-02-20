@@ -1,64 +1,68 @@
 import { motion } from "framer-motion";
 import ScrollReveal from "./ScrollReveal";
 
-const identityLeftImage = "https://images.unsplash.com/photo-1611670502424-232bf030c54b?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D";
-const identityRightImage = "https://images.unsplash.com/photo-1571509408199-4da64495bdc3?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDk1fHx8ZW58MHx8fHx8";
+const gridImages = [
+  "https://images.unsplash.com/photo-1611670502424-232bf030c54b?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  "https://images.unsplash.com/photo-1571509408199-4da64495bdc3?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDk1fHx8ZW58MHx8fHx8",
+  "https://images.unsplash.com/photo-1511818966892-d7d671e672a2?q=80&w=1171&auto=format&fit=crop&ixlib=rb-4.1.0",
+  "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.1.0",
+  "https://images.unsplash.com/photo-1494526585095-c41746248156?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0",
+  "https://images.unsplash.com/photo-1479839672679-a46483c0e7c8?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0",
+  "https://images.unsplash.com/photo-1479839672679-a46483c0e7c8?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0",
+  "https://images.unsplash.com/photo-1482192505345-5655af888cc4?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0",
+  "https://images.unsplash.com/photo-1497366754035-f200968a6e72?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0",
+  "https://images.unsplash.com/photo-1518005020951-eccb494ad742?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0",
+  "https://images.unsplash.com/photo-1471039497385-b6d6ba609f9c?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0",
+  "https://images.unsplash.com/photo-1511818966892-d7d671e672a2?q=80&w=1171&auto=format&fit=crop&ixlib=rb-4.1.0",
+];
+
+const imageRows = [
+  gridImages.slice(0, 4),
+  gridImages.slice(4, 8),
+  gridImages.slice(8, 12),
+];
 
 const DualImageScroll = () => {
   return (
     <section>
-      <div className="relative h-[85vh] md:h-[95vh]">
-        <div className="absolute inset-0 flex items-stretch overflow-hidden">
-          <div className="relative w-1/2 overflow-hidden">
-            <motion.img
-              src={identityLeftImage}
-              alt="Identity Systems left"
-              className="absolute inset-0 w-full h-full object-cover grayscale contrast-125"
-              whileHover={{ scale: 1.04 }}
-              transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-            />
-          </div>
-          <div className="relative w-1/2 overflow-hidden">
-            <motion.img
-              src={identityRightImage}
-              alt="Identity Systems right"
-              className="absolute inset-0 w-full h-full object-cover grayscale contrast-125"
-              whileHover={{ scale: 1.04 }}
-              transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-            />
-          </div>
-          <div className="absolute top-0 bottom-0 left-1/2 w-px bg-background/20 z-10" />
-
-          <div className="absolute inset-0 z-20 pointer-events-none px-4 flex items-center justify-center">
-            <div className="relative w-full max-w-[1200px] h-[320px] md:h-[420px]">
-              <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 inline-flex items-center justify-center px-8 md:px-20 py-4 md:py-6 border border-white/75 rounded-[60px] bg-black/25 backdrop-blur-sm">
-                <h3
-                  className="text-[10vw] md:text-[6vw] font-medium leading-[0.95] tracking-[-0.04em] text-center"
-                  style={{
-                    color: "white",
-                    textShadow: "0 2px 20px rgba(0,0,0,0.5), 0 4px 40px rgba(0,0,0,0.3)",
-                  }}
+      <div className="relative h-[88vh] md:h-[96vh] overflow-hidden bg-black">
+        <div className="absolute inset-0 space-y-4 md:space-y-6 py-5 md:py-8">
+          {imageRows.map((row, rowIndex) => (
+            <motion.div
+              key={rowIndex}
+              className="flex gap-4 md:gap-6"
+              animate={{ x: rowIndex % 2 === 0 ? ["0%", "-50%"] : ["-50%", "0%"] }}
+              transition={{ duration: rowIndex % 2 === 0 ? 28 : 24, repeat: Infinity, ease: "linear" }}
+            >
+              {[...row, ...row].map((src, index) => (
+                <div
+                  key={`${rowIndex}-${index}`}
+                  className="w-[42vw] sm:w-[32vw] md:w-[24vw] lg:w-[20vw] xl:w-[17vw] h-[24vh] md:h-[27vh] shrink-0 overflow-hidden rounded-2xl border border-white/15"
                 >
-                  Identity Systems
-                </h3>
-              </div>
+                  <img
+                    src={src}
+                    alt="Design grid"
+                    className="w-full h-full object-cover grayscale contrast-125"
+                  />
+                </div>
+              ))}
+            </motion.div>
+          ))}
+        </div>
 
-              <div className="hidden md:block absolute left-[44%] top-[36%] w-[120px] h-px bg-white/70 rotate-[-26deg] origin-left" />
-              <div className="hidden md:block absolute left-[54%] top-[36%] w-[120px] h-px bg-white/70 rotate-[26deg] origin-right" />
-              <div className="hidden md:block absolute left-[50%] top-[56%] w-[145px] h-px bg-white/70 rotate-[90deg] origin-left" />
+        <div className="absolute inset-0 bg-black/35" />
 
-              <div className="absolute left-[16%] md:left-[18%] top-[16%] md:top-[14%] px-4 md:px-5 py-2 md:py-2.5 border border-white/75 rounded-full bg-black/35 backdrop-blur-sm">
-                <p className="text-[11px] md:text-sm uppercase tracking-[0.18em] text-white">SEO</p>
-              </div>
-
-              <div className="absolute right-[12%] md:right-[16%] top-[16%] md:top-[14%] px-4 md:px-5 py-2 md:py-2.5 border border-white/75 rounded-full bg-black/35 backdrop-blur-sm">
-                <p className="text-[11px] md:text-sm uppercase tracking-[0.18em] text-white">Design</p>
-              </div>
-
-              <div className="absolute left-1/2 -translate-x-1/2 bottom-[2%] md:bottom-[8%] px-4 md:px-5 py-2 md:py-2.5 border border-white/75 rounded-full bg-black/35 backdrop-blur-sm">
-                <p className="text-[11px] md:text-sm uppercase tracking-[0.18em] text-white">Advertisement</p>
-              </div>
-            </div>
+        <div className="absolute inset-0 z-20 pointer-events-none px-4 flex items-center justify-center">
+          <div className="inline-flex items-center justify-center px-8 md:px-20 py-4 md:py-6 border border-white/75 rounded-[60px] bg-black/35 backdrop-blur-sm">
+            <h3
+              className="text-[10vw] md:text-[6vw] font-medium leading-[0.95] tracking-[-0.04em] text-center"
+              style={{
+                color: "white",
+                textShadow: "0 2px 20px rgba(0,0,0,0.5), 0 4px 40px rgba(0,0,0,0.3)",
+              }}
+            >
+              Identity Systems
+            </h3>
           </div>
         </div>
       </div>
