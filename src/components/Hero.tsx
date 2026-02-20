@@ -1,7 +1,7 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 
-const heroImage = "https://images.unsplash.com/photo-1612864463538-a2644b600e7e?q=80&w=1073&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D";
+const heroImage = "https://images.unsplash.com/photo-1431540015161-0bf868a2d407?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0";
 
 const Hero = () => {
   const ref = useRef(null);
@@ -39,7 +39,7 @@ const Hero = () => {
           <motion.img
             src={heroImage}
             alt="Featured work"
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover grayscale contrast-125"
             whileHover={{ scale: 1.02 }}
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           />

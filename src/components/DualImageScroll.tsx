@@ -1,252 +1,85 @@
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef, useState } from "react";
+import { motion } from "framer-motion";
 import ScrollReveal from "./ScrollReveal";
-import project1 from "@/assets/project-1.jpg";
-import project2 from "@/assets/project-2.jpg";
-import project3 from "@/assets/project-3.jpg";
-import project4 from "@/assets/project-4.jpg";
-import project5 from "@/assets/project-5.jpg";
-import work1 from "@/assets/work-1.jpg";
-import work2 from "@/assets/work-2.jpg";
-import work3 from "@/assets/work-3.jpg";
 
-const imageSets = [
-  {
-    left: project1,
-    right: work1,
-    label: "Identity Systems",
-    sub: "Building visual foundations",
-    hoverImage: project1,
-    hoverText: "Grid-driven brand architecture built for consistency and scale.",
-  },
-  {
-    left: project2,
-    right: work2,
-    label: "Editorial Design",
-    sub: "Print meets digital",
-    hoverImage: project2,
-    hoverText: "Narrative layouts balancing typography, rhythm, and white space.",
-  },
-  {
-    left: project3,
-    right: work3,
-    label: "Campaign Work",
-    sub: "Stories that move people",
-    hoverImage: project3,
-    hoverText: "Cross-channel campaign moments designed for memorability.",
-  },
-  {
-    left: project4,
-    right: project5,
-    label: "Spatial Design",
-    sub: "Environments with intent",
-    hoverImage: project4,
-    hoverText: "Physical and digital environments aligned to one brand voice.",
-  },
-];
+const identityLeftImage = "https://images.unsplash.com/photo-1611670502424-232bf030c54b?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D";
+const identityRightImage = "https://images.unsplash.com/photo-1571509408199-4da64495bdc3?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDk1fHx8ZW58MHx8fHx8";
 
 const DualImageScroll = () => {
-  const ref = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start start", "end end"],
-  });
-
-  const activeIndex = useTransform(scrollYProgress, [0, 0.33, 0.66, 1], [0, 1, 2, 3]);
-
   return (
     <section>
-      {/* Sticky image scroll */}
-      <div ref={ref} className="relative" style={{ height: `${imageSets.length * 80}vh` }}>
-        <div className="sticky top-0 h-screen flex items-stretch overflow-hidden">
+      <div className="relative h-[85vh] md:h-[95vh]">
+        <div className="absolute inset-0 flex items-stretch overflow-hidden">
           <div className="relative w-1/2 overflow-hidden">
-            {imageSets.map((set, i) => (
-              <ImageLayer key={`l-${i}`} src={set.left} index={i} activeIndex={activeIndex} />
-            ))}
+            <motion.img
+              src={identityLeftImage}
+              alt="Identity Systems left"
+              className="absolute inset-0 w-full h-full object-cover"
+              whileHover={{ scale: 1.04 }}
+              transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+            />
           </div>
           <div className="relative w-1/2 overflow-hidden">
-            {imageSets.map((set, i) => (
-              <ImageLayer key={`r-${i}`} src={set.right} index={i} activeIndex={activeIndex} />
-            ))}
-          </div>
-          <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-20">
-            {imageSets.map((set, i) => (
-              <TextOverlay
-                key={`t-${i}`}
-                label={set.label}
-                sub={set.sub}
-                index={i}
-                activeIndex={activeIndex}
-                hoverImage={set.hoverImage}
-                hoverText={set.hoverText}
-              />
-            ))}
+            <motion.img
+              src={identityRightImage}
+              alt="Identity Systems right"
+              className="absolute inset-0 w-full h-full object-cover"
+              whileHover={{ scale: 1.04 }}
+              transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+            />
           </div>
           <div className="absolute top-0 bottom-0 left-1/2 w-px bg-background/20 z-10" />
+
+          <div className="absolute inset-0 flex items-center justify-center z-20 pointer-events-none px-4">
+            <div className="inline-flex items-center justify-center px-10 md:px-20 py-4 md:py-6 border border-white/75 rounded-[60px] bg-black/25 backdrop-blur-sm">
+              <h3
+                className="text-[10vw] md:text-[6vw] font-medium leading-[0.95] tracking-[-0.04em] text-center"
+                style={{
+                  color: "white",
+                  textShadow: "0 2px 20px rgba(0,0,0,0.5), 0 4px 40px rgba(0,0,0,0.3)",
+                }}
+              >
+                Identity Systems
+              </h3>
+            </div>
+          </div>
         </div>
       </div>
 
-      {/* Asymmetric text section below */}
-      <div className="section-padding py-12 md:py-20">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-4">
-          <ScrollReveal className="md:col-span-7">
-            <h2 className="text-[12vw] md:text-[7vw] font-medium leading-[0.9] tracking-[-0.04em] text-foreground">
-              We don't
+      <div className="section-padding py-16 md:py-24">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-8">
+          <ScrollReveal className="md:col-span-8">
+            <h2 className="text-[14vw] md:text-[8vw] lg:text-[6vw] font-medium leading-[0.88] tracking-[-0.05em] text-foreground">
+              We build brands
               <br />
-              follow rules.
+              that outlive trends.
             </h2>
           </ScrollReveal>
 
-          <div className="md:col-span-5 md:col-start-8 flex flex-col justify-end">
+          <div className="md:col-span-4 flex flex-col justify-end">
             <ScrollReveal delay={0.15}>
               <p className="body-large text-muted-foreground max-w-md">
-                Convention is comfortable. We prefer the edges — where new ideas 
-                live and expectations dissolve into possibility.
+                Strategy, visual identity, and execution under one roof. Every element is deliberate. Every rollout is built to perform.
               </p>
             </ScrollReveal>
           </div>
         </div>
 
-        <div className="mt-14 md:mt-20 grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-4">
-          <div className="md:col-span-4">
-            <ScrollReveal delay={0.05}>
-              <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground mb-3">Philosophy</p>
-              <p className="text-sm text-muted-foreground leading-relaxed">
-                Every pixel carries weight. Every choice is deliberate. 
-                We strip away the unnecessary until only the essential remains.
-              </p>
-            </ScrollReveal>
-          </div>
-
-          <ScrollReveal className="md:col-span-8 md:col-start-5" delay={0.1}>
-            <h3 className="text-[9vw] md:text-[5vw] font-medium leading-[0.95] tracking-[-0.03em] text-foreground text-right">
-              Precision is
-              <br />
-              <span className="text-muted-foreground">our language.</span>
-            </h3>
+        <div className="mt-14 md:mt-20 border-t border-foreground/10 pt-10 md:pt-14">
+          <ScrollReveal>
+            <p className="text-[11vw] md:text-[6vw] lg:text-[4.5vw] font-medium leading-[0.92] tracking-[-0.04em] text-foreground">
+              Maximal impact.
+              <span className="text-muted-foreground"> Minimal compromise.</span>
+            </p>
           </ScrollReveal>
-        </div>
 
-        <div className="mt-14 md:mt-20 grid grid-cols-1 md:grid-cols-12 gap-8">
-          <ScrollReveal className="md:col-span-6 md:col-start-4" delay={0.08}>
-            <div className="border-t border-foreground/10 pt-8">
-              <p className="text-[6vw] md:text-[3vw] font-medium leading-[1.1] tracking-[-0.02em] text-foreground text-center">
-                "Design is not what it looks like. 
-                Design is how it works."
-              </p>
-              <p className="text-xs text-muted-foreground text-center mt-6 uppercase tracking-[0.2em]">
-                — Studio Manifesto
-              </p>
-            </div>
+          <ScrollReveal delay={0.1}>
+            <p className="mt-8 text-sm md:text-base text-muted-foreground max-w-3xl">
+              We are the best fit when ambition is high and shortcuts are off the table. Our studio couples editorial-level craft with production-grade delivery so your brand scales without losing its voice.
+            </p>
           </ScrollReveal>
         </div>
       </div>
     </section>
-  );
-};
-
-interface ImageLayerProps {
-  src: string;
-  index: number;
-  activeIndex: any;
-}
-
-const ImageLayer = ({ src, index, activeIndex }: ImageLayerProps) => {
-  const opacity = useTransform(activeIndex, (v: number) => {
-    const dist = Math.abs(v - index);
-    return dist < 0.6 ? 1 : 0;
-  });
-
-  const scale = useTransform(activeIndex, (v: number) => {
-    const dist = Math.abs(v - index);
-    return dist < 0.6 ? 1.05 : 1.15;
-  });
-
-  return (
-    <motion.img
-      src={src}
-      alt=""
-      className="absolute inset-0 w-full h-full object-cover"
-      style={{ opacity, scale }}
-    />
-  );
-};
-
-interface TextOverlayProps {
-  label: string;
-  sub: string;
-  index: number;
-  activeIndex: any;
-  hoverImage: string;
-  hoverText: string;
-}
-
-const TextOverlay = ({ label, sub, index, activeIndex, hoverImage, hoverText }: TextOverlayProps) => {
-  const [hovered, setHovered] = useState(false);
-  const opacity = useTransform(activeIndex, (v: number) => {
-    const dist = Math.abs(v - index);
-    return dist < 0.4 ? 1 : 0;
-  });
-
-  const y = useTransform(activeIndex, (v: number) => {
-    return (v - index) * -40;
-  });
-
-  return (
-    <motion.div
-      className="absolute text-center"
-      style={{ opacity, y }}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-    >
-      {label === "Identity Systems" ? (
-        <div className="inline-flex items-center justify-center px-10 md:px-16 py-4 md:py-6 border border-white/70 rounded-[60px] bg-black/20 backdrop-blur-sm">
-          <h3
-            className="text-[9vw] md:text-[5vw] font-medium leading-[0.95] tracking-[-0.04em]"
-            style={{
-              color: "white",
-              textShadow: "0 2px 20px rgba(0,0,0,0.45), 0 4px 40px rgba(0,0,0,0.25)",
-            }}
-          >
-            {label}
-          </h3>
-        </div>
-      ) : (
-        <h3
-          className="text-[10vw] md:text-[6vw] font-medium leading-[0.95] tracking-[-0.04em]"
-          style={{
-            color: "white",
-            textShadow: "0 2px 20px rgba(0,0,0,0.5), 0 4px 40px rgba(0,0,0,0.3)",
-          }}
-        >
-          {label}
-        </h3>
-      )}
-
-      <p
-        className="text-sm md:text-base mt-4 uppercase tracking-[0.2em]"
-        style={{
-          color: "rgba(255,255,255,0.8)",
-          textShadow: "0 1px 10px rgba(0,0,0,0.6)",
-        }}
-      >
-        {sub}
-      </p>
-
-      <motion.div
-        initial={{ opacity: 0, y: 16 }}
-        animate={{ opacity: hovered ? 1 : 0, y: hovered ? 0 : 16 }}
-        transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-        className="pointer-events-none absolute left-1/2 top-full mt-5 -translate-x-1/2"
-      >
-        <div className="flex items-center gap-4 rounded-2xl border border-white/30 bg-black/50 px-4 py-3 backdrop-blur-md">
-          <img src={hoverImage} alt={`${label} preview`} className="w-[200px] h-[120px] object-cover rounded-xl" />
-          <p className="max-w-[220px] text-left text-xs md:text-sm leading-relaxed text-white/90 normal-case tracking-normal">
-            {hoverText}
-          </p>
-        </div>
-      </motion.div>
-    </motion.div>
   );
 };
 
