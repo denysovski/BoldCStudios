@@ -13,17 +13,27 @@ import Footer from "@/components/Footer";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
+    <div id="home" className="min-h-screen bg-background text-foreground overflow-x-hidden">
       <Navigation />
-      <Hero />
-      <ClientMarquee />
-      <Philosophy />
+      <div id="hero">
+        <Hero />
+      </div>
+      <div id="clients">
+        <ClientMarquee />
+      </div>
+      <div id="philosophy">
+        <Philosophy />
+      </div>
       <WorkShowcase />
-      <Publications />
+      <div id="publications">
+        <Publications />
+      </div>
       <ExtendedShowcase />
       <SphereSection />
       <ScrollFillSection />
-      <DualImageScroll />
+      <div id="process">
+        <DualImageScroll />
+      </div>
       <LiveClock />
       <Footer />
     </div>
