@@ -43,8 +43,9 @@ const Hero = () => {
             whileHover={{ scale: 1.02 }}
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-transparent pointer-events-none" />
           <div className="absolute bottom-0 left-0 right-0 section-padding py-6">
-            <p className="text-xs text-background/70 uppercase tracking-widest">
+            <p className="text-xs text-white/90 uppercase tracking-widest">
               This is what future-proof applications that define, validate & grow your business look like.
             </p>
           </div>

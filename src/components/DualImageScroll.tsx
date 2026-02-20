@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import ScrollReveal from "./ScrollReveal";
 
 const gridImages = [
@@ -28,15 +27,13 @@ const DualImageScroll = () => {
       <div className="relative h-[88vh] md:h-[96vh] overflow-hidden bg-white">
         <div className="absolute inset-0 space-y-4 md:space-y-6 py-5 md:py-8">
           {imageRows.map((row, rowIndex) => (
-            <motion.div
+            <div
               key={rowIndex}
-              className="flex gap-4 md:gap-6"
-              animate={{ x: rowIndex % 2 === 0 ? ["0%", "-50%"] : ["-50%", "0%"] }}
-              transition={{ duration: rowIndex % 2 === 0 ? 28 : 24, repeat: Infinity, ease: "linear" }}
+              className={`flex w-max gap-4 md:gap-6 ${rowIndex % 2 === 0 ? "animate-grid-motion" : "animate-grid-motion-reverse"}`}
             >
-              {[...row, ...row].map((src, index) => (
+              {[0, 1].flatMap((group) => row.map((src, index) => (
                 <div
-                  key={`${rowIndex}-${index}`}
+                  key={`${rowIndex}-${group}-${index}`}
                   className="w-[42vw] sm:w-[32vw] md:w-[24vw] lg:w-[20vw] xl:w-[17vw] h-[24vh] md:h-[27vh] shrink-0 overflow-hidden rounded-2xl border border-black/15"
                 >
                   <img
@@ -45,8 +42,8 @@ const DualImageScroll = () => {
                     className="w-full h-full object-cover grayscale contrast-125"
                   />
                 </div>
-              ))}
-            </motion.div>
+              )))}
+            </div>
           ))}
         </div>
 

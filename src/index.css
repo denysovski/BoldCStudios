@@ -169,6 +169,12 @@
     animation: marquee 30s linear infinite;
   }
 
+  .animate-marquee-slow {
+    animation: marquee 44s linear infinite;
+    will-change: transform;
+    transform: translate3d(0, 0, 0);
+  }
+
   @keyframes marquee-reverse {
     0% { transform: translateX(-50%); }
     100% { transform: translateX(0); }
@@ -176,6 +182,24 @@
 
   .animate-marquee-reverse {
     animation: marquee-reverse 25s linear infinite;
+  }
+
+  .animate-marquee-reverse-slow {
+    animation: marquee-reverse 44s linear infinite;
+    will-change: transform;
+    transform: translate3d(0, 0, 0);
+  }
+
+  .animate-grid-motion {
+    animation: marquee 56s linear infinite;
+    will-change: transform;
+    transform: translate3d(0, 0, 0);
+  }
+
+  .animate-grid-motion-reverse {
+    animation: marquee-reverse 52s linear infinite;
+    will-change: transform;
+    transform: translate3d(0, 0, 0);
   }
 
   /* Start a project marquee */
