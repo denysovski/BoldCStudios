@@ -82,7 +82,7 @@ const Navigation = () => {
             <motion.button
               type="button"
               aria-label="Close menu backdrop"
-              className="fixed inset-0 z-[70] bg-black/35 backdrop-blur-[1px]"
+              className="fixed inset-0 z-[70] bg-black/50 backdrop-blur-md"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
@@ -91,39 +91,58 @@ const Navigation = () => {
             />
 
             <motion.aside
-              className="fixed top-0 right-0 z-[80] h-screen w-[98px] md:w-[118px] bg-black border-l border-white/20 py-6 md:py-8 px-3 md:px-4 flex flex-col"
+              className="fixed top-0 right-0 z-[80] h-screen w-full md:w-1/2 bg-background border-l border-foreground/10 overflow-y-auto"
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
-              transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+              transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
             >
-              <div className="flex flex-col items-center gap-4 mb-6 md:mb-8">
-                <p className="text-[10px] md:text-[11px] uppercase tracking-[0.28em] text-white/60 text-center">Menu</p>
-                <button
-                  type="button"
-                  className="w-8 h-8 md:w-9 md:h-9 rounded-full border border-white/35 text-white/80 hover:text-white hover:border-white transition-colors"
-                  onClick={() => setIsOpen(false)}
-                  aria-label="Close menu"
-                >
-                  ×
-                </button>
-              </div>
-
-              <div className="flex-1 flex flex-col items-center gap-3 md:gap-4 overflow-y-auto">
-                {links.map((link, index) => (
-                  <motion.a
-                    key={link.href}
-                    href={link.href}
+              <div className="section-padding pt-20 pb-32">
+                <div className="flex items-center justify-between mb-16">
+                  <h2 className="text-[8vw] md:text-[5vw] font-medium leading-[0.95] tracking-[-0.04em] text-foreground">
+                    Navigation
+                  </h2>
+                  <button
+                    type="button"
+                    className="flex-shrink-0 w-10 h-10 flex items-center justify-center text-2xl text-foreground hover:text-muted-foreground transition-colors"
                     onClick={() => setIsOpen(false)}
-                    className="text-[10px] md:text-[11px] leading-[1.1] uppercase tracking-[0.16em] font-medium text-white/80 hover:text-white transition-colors text-center"
-                    initial={{ opacity: 0, x: 16 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    exit={{ opacity: 0, x: 12 }}
-                    transition={{ duration: 0.5, delay: 0.04 + index * 0.03, ease: [0.22, 1, 0.36, 1] }}
+                    aria-label="Close menu"
                   >
-                    {link.label}
-                  </motion.a>
-                ))}
+                    ×
+                  </button>
+                </div>
+
+                <div className="space-y-6 md:space-y-8">
+                  {links.map((link, index) => (
+                    <motion.a
+                      key={link.href}
+                      href={link.href}
+                      onClick={() => setIsOpen(false)}
+                      className="block text-[6vw] md:text-[4.5vw] font-medium leading-[1.05] tracking-[-0.03em] text-foreground hover:text-muted-foreground transition-colors"
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: 10 }}
+                      transition={{ duration: 0.5, delay: 0.08 + index * 0.04, ease: [0.22, 1, 0.36, 1] }}
+                    >
+                      {link.label}
+                    </motion.a>
+                  ))}
+                </div>
+
+                <motion.div
+                  className="mt-20 pt-8 border-t border-foreground/10"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.5, delay: 0.4 }}
+                >
+                  <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-4">Contact</p>
+                  <a href="mailto:hello@fragment.studio" className="text-sm text-foreground hover:text-muted-foreground transition-colors">
+                    hello@fragment.studio
+                  </a>
+                  <p className="text-xs text-muted-foreground mt-4">
+                    +1 (323) 555-0190
+                  </p>
+                </motion.div>
               </div>
             </motion.aside>
           </>
