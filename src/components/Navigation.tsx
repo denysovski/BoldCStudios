@@ -99,10 +99,10 @@ const Navigation = () => {
               transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
             >
               <div className="section-padding pt-20 pb-32">
-                <div className="flex items-center justify-between mb-16">
-                  <h2 className="text-[8vw] md:text-[5vw] font-medium leading-[0.95] tracking-[-0.04em] text-foreground">
+                <div className="flex items-center justify-between mb-8">
+                  <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground">
                     MENU
-                  </h2>
+                  </p>
                   <button
                     type="button"
                     className="flex-shrink-0 w-10 h-10 flex items-center justify-center text-2xl text-foreground hover:text-muted-foreground transition-colors"
