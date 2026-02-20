@@ -13,7 +13,7 @@ const DualImageScroll = () => {
             <motion.img
               src={identityLeftImage}
               alt="Identity Systems left"
-              className="absolute inset-0 w-full h-full object-cover"
+              className="absolute inset-0 w-full h-full object-cover grayscale contrast-125"
               whileHover={{ scale: 1.04 }}
               transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
             />
@@ -22,24 +22,42 @@ const DualImageScroll = () => {
             <motion.img
               src={identityRightImage}
               alt="Identity Systems right"
-              className="absolute inset-0 w-full h-full object-cover"
+              className="absolute inset-0 w-full h-full object-cover grayscale contrast-125"
               whileHover={{ scale: 1.04 }}
               transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
             />
           </div>
           <div className="absolute top-0 bottom-0 left-1/2 w-px bg-background/20 z-10" />
 
-          <div className="absolute inset-0 flex items-center justify-center z-20 pointer-events-none px-4">
-            <div className="inline-flex items-center justify-center px-10 md:px-20 py-4 md:py-6 border border-white/75 rounded-[60px] bg-black/25 backdrop-blur-sm">
-              <h3
-                className="text-[10vw] md:text-[6vw] font-medium leading-[0.95] tracking-[-0.04em] text-center"
-                style={{
-                  color: "white",
-                  textShadow: "0 2px 20px rgba(0,0,0,0.5), 0 4px 40px rgba(0,0,0,0.3)",
-                }}
-              >
-                Identity Systems
-              </h3>
+          <div className="absolute inset-0 z-20 pointer-events-none px-4 flex items-center justify-center">
+            <div className="relative w-full max-w-[1200px] h-[320px] md:h-[420px]">
+              <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 inline-flex items-center justify-center px-8 md:px-20 py-4 md:py-6 border border-white/75 rounded-[60px] bg-black/25 backdrop-blur-sm">
+                <h3
+                  className="text-[10vw] md:text-[6vw] font-medium leading-[0.95] tracking-[-0.04em] text-center"
+                  style={{
+                    color: "white",
+                    textShadow: "0 2px 20px rgba(0,0,0,0.5), 0 4px 40px rgba(0,0,0,0.3)",
+                  }}
+                >
+                  Identity Systems
+                </h3>
+              </div>
+
+              <div className="hidden md:block absolute left-[44%] top-[36%] w-[120px] h-px bg-white/70 rotate-[-26deg] origin-left" />
+              <div className="hidden md:block absolute left-[54%] top-[36%] w-[120px] h-px bg-white/70 rotate-[26deg] origin-right" />
+              <div className="hidden md:block absolute left-[50%] top-[56%] w-[145px] h-px bg-white/70 rotate-[90deg] origin-left" />
+
+              <div className="absolute left-[16%] md:left-[18%] top-[16%] md:top-[14%] px-4 md:px-5 py-2 md:py-2.5 border border-white/75 rounded-full bg-black/35 backdrop-blur-sm">
+                <p className="text-[11px] md:text-sm uppercase tracking-[0.18em] text-white">SEO</p>
+              </div>
+
+              <div className="absolute right-[12%] md:right-[16%] top-[16%] md:top-[14%] px-4 md:px-5 py-2 md:py-2.5 border border-white/75 rounded-full bg-black/35 backdrop-blur-sm">
+                <p className="text-[11px] md:text-sm uppercase tracking-[0.18em] text-white">Design</p>
+              </div>
+
+              <div className="absolute left-1/2 -translate-x-1/2 bottom-[2%] md:bottom-[8%] px-4 md:px-5 py-2 md:py-2.5 border border-white/75 rounded-full bg-black/35 backdrop-blur-sm">
+                <p className="text-[11px] md:text-sm uppercase tracking-[0.18em] text-white">Advertisement</p>
+              </div>
             </div>
           </div>
         </div>
